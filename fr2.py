@@ -70,7 +70,7 @@ class Face_Recognition:
             faces = classifier.detectMultiScale(gray_img, scaleFactor, minNeighbors)
             
             for (x, y, w, h) in faces:
-                cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 1)
                 
                 # Predict the face
                 id, confidence = recognizer.predict(gray_img[y:y+h, x:x+w])
@@ -79,7 +79,7 @@ class Face_Recognition:
                 confidence_percent = round(100 - confidence)
                 
                 # Only proceed if confidence is above threshold (adjust as needed)
-                if confidence_percent > 50:  # Lower this value if too strict
+                if confidence_percent > 60:  # Lower this value if too strict
                     # Fetch data from database
                     conn = None
                     try:
